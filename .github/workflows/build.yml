@@ -16,6 +16,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: checking compiler
+        run: |
+          g++ -v
+
       - name: build
         run: |
           cd src
