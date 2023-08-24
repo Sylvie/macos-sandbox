@@ -10,7 +10,7 @@ jobs:
   build:
     env:
       compiler: g++-11
-      build-folder-gcc: build-gcc
+      gcc-build-folder: gcc-build
     strategy:
       matrix:
         os: [ ubuntu-latest, macos-11, macos-12 ]
