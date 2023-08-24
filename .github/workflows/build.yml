@@ -10,6 +10,7 @@ jobs:
   build:
     env:
       compiler: g++-11
+      build-folder-gcc: build-gcc
     strategy:
       matrix:
         os: [ ubuntu-latest, macos-11, macos-12 ]
@@ -22,10 +23,15 @@ jobs:
         run: |
           ${compiler} -v
 
-      - name: build
+      - name: preparing folder for direct build
         run: |
-          cd src
+          mkdir ${build-folder-gcc}
+          cp src/* ${build-folder-gcc}
+
+      - name: building with gcc
+        run: |
+          cd ${build-folder-gcc}
           ${compiler} main.cpp
 
-      - name: test
-        run: src/a.out
+      - name: testing gcc build
+        run: ${build-folder-gcc}/a.out
