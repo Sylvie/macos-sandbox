@@ -8,6 +8,8 @@ on:
 
 jobs:
   build:
+    env:
+      compiler: g++-11
     strategy:
       matrix:
         os: [ ubuntu-latest, macos-11, macos-12 ]
@@ -18,12 +20,12 @@ jobs:
 
       - name: checking compiler
         run: |
-          g++ -v
+          ${compiler} -v
 
       - name: build
         run: |
           cd src
-          g++ main.cpp
+          ${compiler} main.cpp
 
       - name: test
         run: src/a.out
