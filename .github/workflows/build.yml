@@ -31,7 +31,7 @@ jobs:
       - name: building with gcc
         run: |
           cd ${build-folder-gcc}
-          ${compiler} main.cpp
+          ${compiler} hello.cpp
 
       - name: testing gcc build
         run: ${build-folder-gcc}/a.out
