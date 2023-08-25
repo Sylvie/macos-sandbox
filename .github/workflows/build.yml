@@ -39,12 +39,12 @@ jobs:
 
       - name: preparing folder for Makefile build
         run: |
-          cp src/* ${build-folder-makefile}
+          cp src/* ${makefile-build-folder}
 
       - name: building with make
         run: |
-          cd ${build-folder-makefile}
+          cd ${makefile-build-folder}
           make
 
       - name: testing Makefile build
-        run: ${build-folder-makefile}/hello
+        run: ${makefile-build-folder}/hello
