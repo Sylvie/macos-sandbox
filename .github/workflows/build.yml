@@ -11,6 +11,7 @@ jobs:
     env:
       compiler: g++-11
       gcc-build-folder: gcc-build
+      makefile-build-folder: makefile-build
     strategy:
       matrix:
         os: [ ubuntu-latest, macos-11, macos-12 ]
@@ -35,3 +36,15 @@ jobs:
 
       - name: testing gcc build
         run: ${build-folder-gcc}/a.out
+
+      - name: preparing folder for Makefile build
+        run: |
+          cp src/* ${build-folder-makefile}
+
+      - name: building with make
+        run: |
+          cd ${build-folder-makefile}
+          make
+
+      - name: testing Makefile build
+        run: ${build-folder-makefile}/hello
