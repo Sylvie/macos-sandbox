@@ -40,7 +40,7 @@ jobs:
 
       - name: preparing folder for Makefile build
         run: |
-          cp src/* ${{ env.build-folder-makefile }}
+          cp src/* ${{ env.makefile-build-folder }}
 
       - name: building with make
         run: |
