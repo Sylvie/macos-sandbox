@@ -12,6 +12,7 @@ jobs:
       compiler: g++-11
       gcc-build-folder: gcc-build
       makefile-build-folder: makefile-build
+      autotools-build-folder: autotools-build
     strategy:
       matrix:
         os: [ ubuntu-latest, macos-11, macos-12 ]
@@ -49,3 +50,13 @@ jobs:
 
       - name: testing Makefile build
         run: ${{ env.makefile-build-folder }}/hello
+
+      - name: building with autotools
+        run: |
+          cd ${{ env.autotools-build-folder }}
+          autoreconf -i
+          ./configure
+          make
+
+      - name: testing Makefile build
+        run: ${{ env.autotools-build-folder }}/hello
