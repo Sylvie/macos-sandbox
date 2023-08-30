@@ -10,6 +10,9 @@ jobs:
   build:
     env:
       compiler: g++-11
+      CC: gcc-11
+      CXX: g++-11
+      GCOV: gcov-11
       gcc-build-folder: gcc-build
       makefile-build-folder: makefile-build
       autotools-build-folder: autotools-build
@@ -50,6 +53,12 @@ jobs:
 
       - name: testing Makefile build
         run: ${{ env.makefile-build-folder }}/hello
+
+      - name: installing missing packages
+        if: ${{ matrix.os == 'macos-11' || matrix.os == 'macos-12' }}
+        run: |
+          brew update
+          brew install automake
 
       - name: building with autotools
         run: |
