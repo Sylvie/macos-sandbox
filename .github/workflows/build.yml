@@ -16,7 +16,7 @@ env:
   autotools-build-folder: autotools-build
 
 jobs:
-  build:
+  build-hello:
     strategy:
       matrix:
         os: [ ubuntu-latest, macos-11, macos-12 ]
@@ -70,3 +70,58 @@ jobs:
 
       - name: testing Makefile build
         run: ${{ env.autotools-build-folder }}/hello
+
+  build-welcome:
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, macos-11, macos-12 ]
+      fail-fast: false
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: checking compiler
+        run: |
+          ${compiler} -v
+
+      - name: preparing folder for direct build
+        run: |
+          mkdir -p ${{ env.gcc-build-folder }}
+          cp src/* ${{ env.gcc-build-folder }}
+
+      - name: building with gcc
+        run: |
+          cd ${{ env.gcc-build-folder }}
+          ./build.sh
+
+      - name: testing gcc build
+        run: ${{ env.gcc-build-folder }}/a.out
+
+#      - name: preparing folder for Makefile build
+#        run: |
+#          cp src/* ${{ env.makefile-build-folder }}
+#
+#      - name: building with make
+#        run: |
+#          cd ${{ env.makefile-build-folder }}
+#          make
+#
+#      - name: testing Makefile build
+#        run: ${{ env.makefile-build-folder }}/hello
+#
+#      - name: installing missing packages
+#        if: ${{ matrix.os == 'macos-11' || matrix.os == 'macos-12' }}
+#        run: |
+#          brew update
+#          brew install automake
+#
+#      - name: building with autotools
+#        run: |
+#          cd ${{ env.autotools-build-folder }}
+#          autoreconf -i
+#          ./configure
+#          make
+#
+#      - name: testing Makefile build
+#        run: ${{ env.autotools-build-folder }}/hello
