@@ -66,9 +66,9 @@ jobs:
           cd ${{ env.autotools-build-folder }}
           autoreconf -i
           ./configure
-          make
+          make hello
 
-      - name: testing Makefile build
+      - name: testing autotools build
         run: ${{ env.autotools-build-folder }}/hello
 
   build-welcome:
@@ -110,18 +110,18 @@ jobs:
       - name: testing Makefile build
         run: ${{ env.makefile-build-folder }}/welcome
 
-#      - name: installing missing packages
-#        if: ${{ matrix.os == 'macos-11' || matrix.os == 'macos-12' }}
-#        run: |
-#          brew update
-#          brew install automake
-#
-#      - name: building with autotools
-#        run: |
-#          cd ${{ env.autotools-build-folder }}
-#          autoreconf -i
-#          ./configure
-#          make
-#
-#      - name: testing Makefile build
-#        run: ${{ env.autotools-build-folder }}/hello
+      - name: installing missing packages
+        if: ${{ matrix.os == 'macos-11' || matrix.os == 'macos-12' }}
+        run: |
+          brew update
+          brew install automake
+
+      - name: building with autotools
+        run: |
+          cd ${{ env.autotools-build-folder }}
+          autoreconf -i
+          ./configure
+          make welcome
+
+      - name: testing autotools build
+        run: ${{ env.autotools-build-folder }}/welcome
