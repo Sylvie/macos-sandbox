@@ -50,7 +50,7 @@ jobs:
       - name: building with make
         run: |
           cd ${{ env.makefile-build-folder }}
-          make
+          make hello
 
       - name: testing Makefile build
         run: ${{ env.makefile-build-folder }}/hello
@@ -98,18 +98,18 @@ jobs:
       - name: testing gcc build
         run: ${{ env.gcc-build-folder }}/a.out
 
-#      - name: preparing folder for Makefile build
-#        run: |
-#          cp src/* ${{ env.makefile-build-folder }}
-#
-#      - name: building with make
-#        run: |
-#          cd ${{ env.makefile-build-folder }}
-#          make
-#
-#      - name: testing Makefile build
-#        run: ${{ env.makefile-build-folder }}/hello
-#
+      - name: preparing folder for Makefile build
+        run: |
+          cp src/* ${{ env.makefile-build-folder }}
+
+      - name: building with make
+        run: |
+          cd ${{ env.makefile-build-folder }}
+          make welcome
+
+      - name: testing Makefile build
+        run: ${{ env.makefile-build-folder }}/welcome
+
 #      - name: installing missing packages
 #        if: ${{ matrix.os == 'macos-11' || matrix.os == 'macos-12' }}
 #        run: |
