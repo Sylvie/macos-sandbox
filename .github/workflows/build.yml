@@ -38,7 +38,7 @@ jobs:
       - name: building with gcc
         run: |
           cd ${{ env.gcc-build-folder }}
-          ${compiler} hello.cpp
+          ${compiler} hello.cpp -lstdc++fs
 
       - name: testing gcc build
         run: ${{ env.gcc-build-folder }}/a.out
