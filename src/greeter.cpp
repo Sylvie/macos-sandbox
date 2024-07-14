@@ -6,11 +6,9 @@
 #include <iostream>
 #include <filesystem>
 
-namespace fs = std::filesystem;
-
 void Greeter::greet() const
 {
 	std::cout << "Welcome !" << std::endl;
-	fs::path chemin(".");
-	std::cout << "Chemin courant: " << fs::absolute(chemin) << std::endl;
+	std::path chemin(".");
+	std::cout << "Chemin courant: " << std::absolute(chemin) << std::endl;
 }
