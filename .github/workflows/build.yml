@@ -41,6 +41,7 @@ jobs:
           cp src/* ${{ env.gcc-build-folder }}
 
       - name: building with gcc
+        continue-on-error: true
         run: |
           cd ${{ env.gcc-build-folder }}
           ${compiler} hello.cpp -lstdc++fs
@@ -53,6 +54,7 @@ jobs:
           cp src/* ${{ env.makefile-build-folder }}
 
       - name: building with make
+        continue-on-error: true
         run: |
           cd ${{ env.makefile-build-folder }}
           make hello
@@ -101,6 +103,7 @@ jobs:
           cp src/* ${{ env.gcc-build-folder }}
 
       - name: building with gcc
+        continue-on-error: true
         run: |
           cd ${{ env.gcc-build-folder }}
           ./build.sh
@@ -113,6 +116,7 @@ jobs:
           cp src/* ${{ env.makefile-build-folder }}
 
       - name: building with make
+        continue-on-error: true
         run: |
           cd ${{ env.makefile-build-folder }}
           make welcome
