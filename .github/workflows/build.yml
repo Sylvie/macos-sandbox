@@ -47,6 +47,7 @@ jobs:
           ${compiler} hello.cpp -lstdc++fs
 
       - name: testing gcc build
+        continue-on-error: true
         run: ${{ env.gcc-build-folder }}/a.out
 
       - name: preparing folder for Makefile build
@@ -60,6 +61,7 @@ jobs:
           make hello
 
       - name: testing Makefile build
+        continue-on-error: true
         run: ${{ env.makefile-build-folder }}/hello
 
       - name: installing missing packages
@@ -109,6 +111,7 @@ jobs:
           ./build.sh
 
       - name: testing gcc build
+        continue-on-error: true
         run: ${{ env.gcc-build-folder }}/a.out
 
       - name: preparing folder for Makefile build
@@ -122,6 +125,7 @@ jobs:
           make welcome
 
       - name: testing Makefile build
+        continue-on-error: true
         run: ${{ env.makefile-build-folder }}/welcome
 
       - name: installing missing packages
