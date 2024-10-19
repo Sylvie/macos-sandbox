@@ -3,7 +3,7 @@ AM_INIT_AUTOMAKE([foreign subdir-objects dist-zip tar-pax])
 
 AC_CONFIG_MACRO_DIR([m4])
 AC_PROG_CXX
-AX_CXX_COMPILE_STDCXX_11([ext], [mandatory])
+AX_CXX_COMPILE_STDCXX_17([ext], [mandatory])
 AC_PROG_CC
 AC_PROG_RANLIB
 
