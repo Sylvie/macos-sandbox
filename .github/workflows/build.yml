@@ -49,6 +49,7 @@ jobs:
         run: ${{ env.gcc-build-folder }}/a.out
 
       - name: preparing folder for Makefile build
+        if: ${{ always() }}
         run: |
           cp src/* ${{ env.makefile-build-folder }}
 
@@ -61,7 +62,7 @@ jobs:
         run: ${{ env.makefile-build-folder }}/hello
 
       - name: installing missing packages
-        if: ${{ matrix.os == 'macos-12' || matrix.os == 'macos-13' || matrix.os == 'macos-14' }}
+        if: ${{ always()  && ( matrix.os == 'macos-12' || matrix.os == 'macos-13' || matrix.os == 'macos-14' ) }}
         run: |
           brew update
           brew install automake
@@ -109,6 +110,7 @@ jobs:
         run: ${{ env.gcc-build-folder }}/a.out
 
       - name: preparing folder for Makefile build
+        if: ${{ always() }}
         run: |
           cp src/* ${{ env.makefile-build-folder }}
 
@@ -121,7 +123,7 @@ jobs:
         run: ${{ env.makefile-build-folder }}/welcome
 
       - name: installing missing packages
-        if: ${{ matrix.os == 'macos-12' || matrix.os == 'macos-13' || matrix.os == 'macos-14' }}
+        if: ${{ always() && ( matrix.os == 'macos-12' || matrix.os == 'macos-13' || matrix.os == 'macos-14' ) }}
         run: |
           brew update
           brew install automake
