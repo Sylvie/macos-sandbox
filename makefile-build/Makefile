@@ -9,3 +9,6 @@ welcome: welcome.o libgreeter.a
 libgreeter.a: greeter.o
 	ar ru $@ $^
 	ranlib $@
+
+clean:
+	rm -f *.o *.a welcome hello
