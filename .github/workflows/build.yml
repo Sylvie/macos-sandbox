@@ -7,10 +7,10 @@ on:
     branches: [ "main" ]
 
 env:
-  compiler: g++-11
-  CC: gcc-11
-  CXX: g++-11
-  GCOV: gcov-11
+  compiler: g++-12
+  CC: gcc-12
+  CXX: g++-12
+  GCOV: gcov-12
   gcc-build-folder: gcc-build
   makefile-build-folder: makefile-build
   autotools-build-folder: autotools-build
