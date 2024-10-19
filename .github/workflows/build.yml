@@ -94,6 +94,8 @@ jobs:
       - name: checking compiler
         run: |
           ${compiler} -v
+          echo "g++ -v:"
+          g++ -v
 
       - name: preparing folder for direct build
         run: |
