@@ -41,13 +41,11 @@ jobs:
           cp src/* ${{ env.gcc-build-folder }}
 
       - name: building with gcc
-        continue-on-error: true
         run: |
           cd ${{ env.gcc-build-folder }}
           ${compiler} hello.cpp -lstdc++fs
 
       - name: testing gcc build
-        continue-on-error: true
         run: ${{ env.gcc-build-folder }}/a.out
 
       - name: preparing folder for Makefile build
@@ -55,13 +53,11 @@ jobs:
           cp src/* ${{ env.makefile-build-folder }}
 
       - name: building with make
-        continue-on-error: true
         run: |
           cd ${{ env.makefile-build-folder }}
           make hello
 
       - name: testing Makefile build
-        continue-on-error: true
         run: ${{ env.makefile-build-folder }}/hello
 
       - name: installing missing packages
@@ -105,13 +101,11 @@ jobs:
           cp src/* ${{ env.gcc-build-folder }}
 
       - name: building with gcc
-        continue-on-error: true
         run: |
           cd ${{ env.gcc-build-folder }}
           ./build.sh
 
       - name: testing gcc build
-        continue-on-error: true
         run: ${{ env.gcc-build-folder }}/a.out
 
       - name: preparing folder for Makefile build
@@ -119,13 +113,11 @@ jobs:
           cp src/* ${{ env.makefile-build-folder }}
 
       - name: building with make
-        continue-on-error: true
         run: |
           cd ${{ env.makefile-build-folder }}
           make welcome
 
       - name: testing Makefile build
-        continue-on-error: true
         run: ${{ env.makefile-build-folder }}/welcome
 
       - name: installing missing packages
